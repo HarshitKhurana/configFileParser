@@ -19,4 +19,8 @@ g++  configParser.cpp -o configParser
 ./configParser FileToParse.config
 ```
 <br>
+-> Successfull parsing returns 0 as exit code.
+<br>
+-> On error it returns non-zero exit code.
+<br>
 

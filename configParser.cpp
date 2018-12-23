@@ -81,9 +81,11 @@ int main( int argc,  char *argv[]){
 		if (obj->key == string("Null"))
 			continue;
 		if (obj->key == string("corrupt")){
-			cout << "\t[#] Error in parsing file: "<< filename<<" , file format not correct" << endl;
+		cout << "\t[#] Error in parsing file: "<< filename<<" , file format not correct" << endl;
 			exit(1);	// Non-zero exit code to indicate error in config file
 		}
 		cout <<"[*] "<<obj->key << ":"<<obj->value<<endl;
 	}
+  // return success
+  exit (0); 
 }
