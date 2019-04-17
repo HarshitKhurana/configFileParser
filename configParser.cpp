@@ -47,7 +47,7 @@ KeyValue * Parse(string singleLine) {
 	key[index1]='\0';
 	value[index2]='\0';
 	if (!delimiterEncountered)	{
-		// cout << "[#] No delimiter found - error"<<endl;
+		// cerr << "[#] No delimiter found - error"<<endl;
 		return  new KeyValue(string("corrupt"), nullValue);
 	}
 	// cout << "[*] Returning "<<key<<":"<<value<<endl;
@@ -62,7 +62,7 @@ int main( int argc,  char *argv[]){
 */ 
 	cout <<"[*] The delimiter used in config file must be '=' and comments should start with'#'"<<endl;
 	if (argc != 2){
-		cout << "[#] Usage : \n\t"<<argv[0]<<"<configfile>"<<endl;
+		cerr << "[#] Usage : \n\t"<<argv[0]<<"<configfile>"<<endl;
 		exit(1);
 	}
 	string filename (argv[1]);
@@ -70,7 +70,7 @@ int main( int argc,  char *argv[]){
 	std::ifstream infile (filename.c_str());
 
 	if (!infile)  {
-		cout << "[#] Error opening file "<<endl;
+		cerr << "[#] Error opening file "<<endl;
 		exit(1);
 	}
 	cout << "[*] Reading from file : " <<filename <<endl ;
@@ -81,7 +81,8 @@ int main( int argc,  char *argv[]){
 		if (obj->key == string("Null"))
 			continue;
 		if (obj->key == string("corrupt")){
-		cout << "\t[#] Error in parsing file: "<< filename<<" , file format not correct" << endl;
+		cerr << "\t[#] Error in parsing file: "<< filename<<" , file format not correct" << endl;
+    cerr <<"\t[#] "<<"Error here : "<<line<<endl;
 			exit(1);	// Non-zero exit code to indicate error in config file
 		}
 		cout <<"[*] "<<obj->key << ":"<<obj->value<<endl;
