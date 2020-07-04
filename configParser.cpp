@@ -66,14 +66,7 @@ int main( int argc,  char *argv[]){
 		exit(1);
 	}
 	string filename (argv[1]);
-	// input file stream object named infile to read from file.
-	std::ifstream infile (filename.c_str());
-
-	if (!infile)  {
-		cerr << "[#] Error opening file "<<endl;
-		exit(1);
-	}
-	cout << "[*] Reading from file : " <<filename <<endl ;
+    Reader file_rdr;
 	
 	for (std:: string line; getline(infile , line);) {
 		// cout << "[*] Line is :^^^"<<line<<"%%%"<<endl;
